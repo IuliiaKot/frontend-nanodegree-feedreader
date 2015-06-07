@@ -32,16 +32,16 @@ $(function() {
          //Test to ensures that each feed in the allFeeds  has a url and url is not empty
         it("URL is not empty", function() {
             allFeeds.forEach(function(feed) {
-              expect(feed.url).toBeDefined();
-              expect(feed.url.length).not.toBe(0);
+                expect(feed.url).toBeDefined();
+                expect(feed.url.length).not.toBe(0);
             });
         });
 
          //Test to ensures that each feed in the allFeeds  has a name and name is not empty
         it("Name is not empty", function() {
-            allFeeds.forEach(function(feed){
-              expect(feed.name).toBeDefined();
-              expect(feed.name.length).not.toBe(0);
+            allFeeds.forEach(function(feed) {
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).not.toBe(0);
             });
         });
     });
@@ -52,17 +52,17 @@ $(function() {
 
        //Test to entries that the menu hidden by default
         it("the menu element hidden by default", function() {
-          expect($('body').hasClass('menu-hidden')).toBeTruthy();
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
 
         // Test to ensure that the menu appear and hidden.
         it('the menu changes visibility', function() {
          // Trigger event on menu
-          $('.menu-icon-link').trigger('click');
-          expect($('body').hasClass('menu-hidden')).toBeFalsy();
+            $('.menu-icon-link').trigger('click');
+            expect($('body').hasClass('menu-hidden')).toBeFalsy();
          // Trigger event on menu
-          $('.menu-icon-link').trigger('click');
-          expect($('body').hasClass('menu-hidden')).toBeTruthy();
+            $('.menu-icon-link').trigger('click');
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
 
         });
     });
@@ -72,13 +72,13 @@ $(function() {
 
        // Call loadFeed() for initial entries
         beforeEach(function(done) {
-          loadFeed(0, done);
+            loadFeed(0, done);
         });
 
        // Test to ensure there is at least a single .entry element within the .feed container.
         it('has been loaded', function(done) {
-          expect($('.feed').children().length).toBeGreaterThan(0);
-          done();
+            expect($('.feed').children().length).toBeGreaterThan(0);
+            done();
         });
     });
 
@@ -90,23 +90,23 @@ $(function() {
 
        //beforeEach wait for async calls to finish
         beforeEach(function(done) {
-          //Load the first feed
-          loadFeed(0 ,function() {
-            //Save content of feed to variable
-            current = $('.feed').html();
-            //Load second feed
-            loadFeed(1, function() {
-              //Save contentof feed to variable
-              after = $('.feed'.html);
-              done();
+            //Load the first feed
+            loadFeed(0 ,function() {
+              //Save content of feed to variable
+              current = $('.feed').html();
+              //Load second feed
+              loadFeed(1, function() {
+                //Save contentof feed to variable
+                after = $('.feed').html();
+                done();
+              });
             });
-          });
         });
 
         //Test to ensure that content are different
         it('changes content' , function(done) {
-          expect(current != after).toBe(true);
-          done();
+            expect(current != after).toBe(true);
+            done();
         });
     });
 
